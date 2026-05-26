@@ -1,0 +1,159 @@
+/* --- VARIABLES DE COLOR (Estilo MakerWorld) --- */
+:root {
+    --bg-color: #f5f6f8;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --accent-color: #0284c7; /* Azul scout/tecnológico */
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-bottom: 60px;
+}
+
+header {
+    background-color: var(--card-bg);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- FILTROS / CATEGORÍAS --- */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--card-bg);
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* --- CUADRÍCULA DE TARJETAS (THE GRID) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* --- TARJETA DE DISEÑO (CARD) --- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Contenedor de la foto para mantener proporción 4:3 */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Proporción 4:3 */
+    background-color: #eaeaea;
+}
+
+.card-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Se asegura de que la foto llene el espacio de forma limpia */
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1; /* Empuja los tags hacia abajo para que se alineen */
+}
+
+/* Etiquetas internas de la tarjeta */
+.card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Colores de etiquetas ejemplo */
+.tag-animal { background-color: #fef3c7; color: #d97706; }
+.tag-estilo { background-color: #e0f2fe; color: #0284c7; }
+
+
