@@ -1,0 +1,60 @@
+import pyvista as pv
+import os
+
+def generar_4_vistas_stl(ruta_stl, carpeta_salida="fotos_render"):
+    # 1. Crear la carpeta de salida si no existe
+    if not os.path.exists(carpeta_salida):
+        os.makedirs(carpeta_salida)
+        
+    nombre_base = os.path.splitext(os.path.basename(ruta_stl))[0]
+    
+    # 2. Cargar el modelo STL
+    print(f"Cargando {ruta_stl}...")
+    malla = pv.read(ruta_stl)
+    
+    # 3. Configurar el "Plotter" (la ventana de renderizado)
+    # Lo configuramos en 'off_screen=True' para que haga todo en segundo plano sin abrir ventanas molestas
+    plotter = pv.Plotter(off_screen=True, window_size=[800, 600])
+    
+    # Cambiamos el fondo a blanco puro
+    plotter.background_color = "white"
+    
+    # Añadimos el modelo. Aquí puedes cambiar el color (ej: 'orange', 'grey', 'gold')
+    # Usamos 'smooth_shading' para que se vea más realista y suave, estilo MakerWorld
+    plotter.add_mesh(malla, color="#d1d5db", smooth_shading=True, specular=0.1)
+    
+    # Ajustamos la cámara inicialmente para que el objeto entre perfecto en el encuadre
+    plotter.reset_camera()
+    
+    # Guardamos la posición inicial de la cámara para usarla como pivote
+    camara_original = plotter.camera.position
+    
+    print("Generando renders...")
+    
+    # 4. Tomar 4 fotos rotando 90 grados en el eje Z (vertical)
+    for i in range(4):
+        angulo = i * 90
+        
+        # Guardamos la imagen actual
+        nombre_archivo = f"{nombre_base}_vista_{angulo}.png"
+        ruta_guardado = os.path.join(carpeta_salida, nombre_archivo)
+        
+        # Forzar un renderizado previo antes de capturar la pantalla
+        plotter.render()
+        plotter.screenshot(ruta_guardado)
+        print(f"-> Guardada: {ruta_guardado}")
+        
+        # Rotar la cámara 90 grados alrededor del eje Z para la siguiente foto
+        plotter.camera.azimuth += 90
+
+    plotter.close()
+    print("¡Proceso completado con éxito!")
+
+# --- EJEMPLO DE USO ---
+# Cambia 'tu_pasapanuelo.stl' por el nombre de tu archivo real
+archivo_prueba = "tu_pasapanuelo.stl" 
+
+if os.path.exists(archivo_prueba):
+    generar_4_vistas_stl(archivo_prueba)
+else:
+    print(f"Por favor, coloca un archivo llamado '{archivo_prueba}' en esta carpeta o cambia la ruta en el script.")
