@@ -1,27 +1,40 @@
-import pyvista as pv
-import os
+import sys
+from pathlib import Path
 
-def generar_4_vistas_stl(ruta_stl, carpeta_salida="fotos_render"):
+import pyvista as pv
+
+
+def obtener_directorio_base():
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parent
+
+def generar_4_vistas_stl(ruta_stl, carpeta_salida=None):
+    ruta_stl = Path(ruta_stl)
+    if carpeta_salida is None:
+        carpeta_salida = ruta_stl.parent / f"render_{ruta_stl.stem}"
+    else:
+        carpeta_salida = Path(carpeta_salida)
+
     # 1. Crear la carpeta de salida si no existe
-    if not os.path.exists(carpeta_salida):
-        os.makedirs(carpeta_salida)
-        
-    nombre_base = os.path.splitext(os.path.basename(ruta_stl))[0]
+    carpeta_salida.mkdir(parents=True, exist_ok=True)
+
+    nombre_base = ruta_stl.stem
     
     # 2. Cargar el modelo STL
     print(f"Cargando {ruta_stl}...")
-    malla = pv.read(ruta_stl)
+    malla = pv.read(str(ruta_stl))
     
     # 3. Configurar el "Plotter" (la ventana de renderizado)
     # Lo configuramos en 'off_screen=True' para que haga todo en segundo plano sin abrir ventanas molestas
     plotter = pv.Plotter(off_screen=True, window_size=[800, 600])
     
     # Cambiamos el fondo a blanco puro
-    plotter.background_color = "white"
+    plotter.background_color = "gray"
     
     # Añadimos el modelo. Aquí puedes cambiar el color (ej: 'orange', 'grey', 'gold')
     # Usamos 'smooth_shading' para que se vea más realista y suave, estilo MakerWorld
-    plotter.add_mesh(malla, color="#d1d5db", smooth_shading=True, specular=0.1)
+    plotter.add_mesh(malla, color="#d1d5db", smooth_shading= False , specular=0.1)
     
     # Ajustamos la cámara inicialmente para que el objeto entre perfecto en el encuadre
     plotter.reset_camera()
@@ -37,11 +50,11 @@ def generar_4_vistas_stl(ruta_stl, carpeta_salida="fotos_render"):
         
         # Guardamos la imagen actual
         nombre_archivo = f"{nombre_base}_vista_{angulo}.png"
-        ruta_guardado = os.path.join(carpeta_salida, nombre_archivo)
+        ruta_guardado = carpeta_salida / nombre_archivo
         
         # Forzar un renderizado previo antes de capturar la pantalla
         plotter.render()
-        plotter.screenshot(ruta_guardado)
+        plotter.screenshot(str(ruta_guardado))
         print(f"-> Guardada: {ruta_guardado}")
         
         # Rotar la cámara 90 grados alrededor del eje Z para la siguiente foto
@@ -50,11 +63,75 @@ def generar_4_vistas_stl(ruta_stl, carpeta_salida="fotos_render"):
     plotter.close()
     print("¡Proceso completado con éxito!")
 
-# --- EJEMPLO DE USO ---
-# Cambia 'tu_pasapanuelo.stl' por el nombre de tu archivo real
-archivo_prueba = "tu_pasapanuelo.stl" 
+def resolver_ruta_entrada(entrada, directorio_base):
+    ruta_original = Path(entrada.strip().strip('"').strip("'"))
+    candidatos = []
 
-if os.path.exists(archivo_prueba):
-    generar_4_vistas_stl(archivo_prueba)
-else:
-    print(f"Por favor, coloca un archivo llamado '{archivo_prueba}' en esta carpeta o cambia la ruta en el script.")
+    if ruta_original.is_absolute():
+        candidatos.append(ruta_original)
+    else:
+        candidatos.append(ruta_original)
+        candidatos.append(directorio_base / ruta_original)
+        candidatos.append(Path.cwd() / ruta_original)
+
+    for candidato in candidatos:
+        if candidato.exists():
+            return candidato
+
+    if ruta_original.suffix.lower() != ".stl":
+        for candidato in candidatos:
+            candidato_stl = candidato.with_suffix(".stl")
+            if candidato_stl.exists():
+                return candidato_stl
+
+    return candidatos[0]
+
+
+def solicitar_nombre_stl(directorio_base):
+    entrada = input("Nombre del STL o carpeta (o 'salir' para terminar): ").strip()
+    if entrada.lower() in {"salir", "exit", "quit", "q"}:
+        return None
+
+    return resolver_ruta_entrada(entrada, directorio_base)
+
+
+def procesar_carpeta_stls(carpeta_stls):
+    carpeta_stls = Path(carpeta_stls)
+    archivos_stl = sorted(carpeta_stls.rglob("*.stl"))
+
+    if not archivos_stl:
+        print(f"No se encontraron archivos STL en: {carpeta_stls}")
+        return
+
+    print(f"Se encontraron {len(archivos_stl)} archivo(s) STL en {carpeta_stls}")
+
+    for archivo_stl in archivos_stl:
+        try:
+            generar_4_vistas_stl(archivo_stl)
+        except Exception as error:
+            print(f"Error procesando {archivo_stl}: {error}")
+
+
+def ejecutar_interactivo():
+    directorio_base = obtener_directorio_base()
+    print(f"Carpeta base: {directorio_base}")
+
+    while True:
+        ruta_stl = solicitar_nombre_stl(directorio_base)
+        if ruta_stl is None:
+            print("Script detenido por el usuario.")
+            break
+
+        if not ruta_stl.exists():
+            print(f"No se encontró el archivo: {ruta_stl}")
+            continue
+
+        if ruta_stl.is_dir():
+            procesar_carpeta_stls(ruta_stl)
+            continue
+
+        generar_4_vistas_stl(ruta_stl)
+
+
+if __name__ == "__main__":
+    ejecutar_interactivo()
