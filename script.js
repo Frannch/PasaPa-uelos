@@ -2,94 +2,140 @@
 const modelos = [
     {
         id: 1,
-        nombre: "Tirica",
+        nombre: "Dragón",
         imagenes: [
-            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_180.png",
-            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_270.png"
+            "Cortar/Renders/render_dragon/dragon_vista_180.png",
+            "Cortar/Renders/render_dragon/dragon_vista_270.png",
+            "Cortar/Renders/render_dragon/dragon_vista_0.png"
         ],
-        descripcion: "Es un gato?",
+        descripcion: "",
+        currentIndex: 0
+    },
+    {
+        id: 11,
+        nombre: "Scouts de Argentina",
+        imagenes: [
+            "Cortar/Renders/render_canuto/canuto_vista_180.png",
+            "Cortar/Renders/render_canuto/canuto_vista_270.png",
+            "Cortar/Renders/render_canuto/canuto_vista_0.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+    {
+        id: 12,
+        nombre: "Coyote",
+        imagenes: [
+            "Cortar/Renders/render_coyote/coyote_vista_180.png",
+            "Cortar/Renders/render_coyote/coyote_vista_270.png",
+            "Cortar/Renders/render_coyote/coyote_vista_0.png"
+        ],
+        descripcion: "",
         currentIndex: 0
     },
     {
         id: 2,
-        nombre: "Lince",
-        imagenes: [
-            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_180.png",
-            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_270.png"
-        ],
-        descripcion: "Otro gato",
-        currentIndex: 0
-    },
-    {
-        id: 3,
         nombre: "Pájaro Carpintero",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_180.png",
             "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_270.png",
             "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_90.png"
         ],
-        descripcion: "No es un gato",
+        descripcion: "",
         currentIndex: 0
     },
-       {
-        id: 4,
-        nombre: "Dragón",
-        imagenes: [
-            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_0.png",
-            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_90.png"
-        ],
-        descripcion: "Fireball",
-        currentIndex: 0
-    },
-       {
-        id: 5,
+      {
+        id: 3,
         nombre: "Grulla",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_180.png",
             "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_270.png",
             "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_90.png"
         ],
-        descripcion: "Si, es la nube de DBZ",
+        descripcion: "",
         currentIndex: 0
     },
        {
-        id: 6,
-        nombre: "Serval",
-        imagenes: [
-            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_270.png",
-            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_90.png"
-        ],
-        descripcion: "Otro gato",
-        currentIndex: 0
-    },
-       {
-        id: 7,
+        id: 4,
         nombre: "Caballo",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_270.png",
-            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png"
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_90.png"
         ],
-        descripcion: "Ico",
+        descripcion: "",
         currentIndex: 0
     },
-     {
-        id: 8,
+    {
+        id: 5,
         nombre: "Panda Rojo",
         imagenes: [
             "Cortar/Renders/render_PandaRojo/PandaRojo_vista_180.png",
-            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_270.png"
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_270.png",
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_0.png"
         ],
-        descripcion: "Guerrero Dragón",
+        descripcion: "",
         currentIndex: 0
     },
-     {
+    {
+
+        
+        id: 6,
+        nombre: "Tirica",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_0.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+    {
+        id: 7,
+        nombre: "Lince",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_0.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+    
+       {
+        id: 8,
+        nombre: "Dragón",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_90.png",
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_270.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+     
+       {
         id: 9,
+        nombre: "Serval",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_90.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+    
+     
+     {
+        id: 10,
         nombre: "Chimuelo",
         imagenes: [
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_180.png",
             "Cortar/Renders/render_chimuelo/chimuelo_vista_270.png",
-            "Cortar/Renders/render_chimuelo/chimuelo_vista_180.png"
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_0.png"
         ],
-        descripcion: "Entrenable",
+        descripcion: "",
         currentIndex: 0
     },
      
