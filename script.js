@@ -2,37 +2,97 @@
 const modelos = [
     {
         id: 1,
-        nombre: "Pasapañuelo Zorro",
+        nombre: "Tirica",
         imagenes: [
-            "https://via.placeholder.com/400x300",
-            "https://via.placeholder.com/400x300/0077cc/ffffff",
-            "https://via.placeholder.com/400x300/ffcc00/000000",
-            "https://via.placeholder.com/400x300/22aa66/ffffff"
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_270.png"
         ],
-        descripcion: "Diseño geométrico de zorro con varias vistas del modelo.",
+        descripcion: "Es un gato?",
         currentIndex: 0
     },
     {
         id: 2,
-        nombre: "Lobo Aullando",
+        nombre: "Lince",
         imagenes: [
-            "https://via.placeholder.com/400x300",
-            "https://via.placeholder.com/400x300/333333/ffffff"
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_270.png"
         ],
-        descripcion: "Silueta clásica de lobo con diferentes ángulos de presentación.",
+        descripcion: "Otro gato",
         currentIndex: 0
     },
     {
         id: 3,
-        nombre: "Flor de Lis Standard",
+        nombre: "Pájaro Carpintero",
         imagenes: [
-            "https://via.placeholder.com/400x300",
-            "https://via.placeholder.com/400x300/cc0000/ffffff",
-            "https://via.placeholder.com/400x300/004488/ffffff"
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_90.png"
         ],
-        descripcion: "Un modelo robusto con varias imágenes de detalle.",
+        descripcion: "No es un gato",
         currentIndex: 0
-    }
+    },
+       {
+        id: 4,
+        nombre: "Dragón",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_90.png"
+        ],
+        descripcion: "Fireball",
+        currentIndex: 0
+    },
+       {
+        id: 5,
+        nombre: "Grulla",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_90.png"
+        ],
+        descripcion: "Si, es la nube de DBZ",
+        currentIndex: 0
+    },
+       {
+        id: 6,
+        nombre: "Serval",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_90.png"
+        ],
+        descripcion: "Otro gato",
+        currentIndex: 0
+    },
+       {
+        id: 7,
+        nombre: "Caballo",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png"
+        ],
+        descripcion: "Ico",
+        currentIndex: 0
+    },
+     {
+        id: 8,
+        nombre: "Panda Rojo",
+        imagenes: [
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_180.png",
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_270.png"
+        ],
+        descripcion: "Guerrero Dragón",
+        currentIndex: 0
+    },
+     {
+        id: 9,
+        nombre: "Chimuelo",
+        imagenes: [
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_270.png",
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_180.png"
+        ],
+        descripcion: "Entrenable",
+        currentIndex: 0
+    },
+     
 ];
 
 // Función para generar el HTML de una tarjeta
