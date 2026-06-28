@@ -2,47 +2,114 @@
 const modelos = [
     {
         id: 1,
-        nombre: "Pasapañuelo Zorro",
-        imagen: "https://via.placeholder.com/400x300",
-        descripcion: "",
-        categoria: "Animales",
-        tags: ["Zorro", "Facetado"]
+        nombre: "Tirica",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_270.png"
+        ],
+        descripcion: "Es un gato?",
+        currentIndex: 0
     },
     {
         id: 2,
-        nombre: "Lobo Aullando",
-        imagen: "https://via.placeholder.com/400x300",
-        descripcion: "",
-        categoria: "Animales",
-        tags: ["Lobo", "Realista"]
+        nombre: "Lince",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_270.png"
+        ],
+        descripcion: "Otro gato",
+        currentIndex: 0
     },
     {
         id: 3,
-        nombre: "Flor de Lis Standard",
-        imagen: "https://via.placeholder.com/400x300",
-        descripcion: "",
-        categoria: "Realista",
-        tags: ["Tradicional", "Textura"]
-    }
+        nombre: "Pájaro Carpintero",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_90.png"
+        ],
+        descripcion: "No es un gato",
+        currentIndex: 0
+    },
+       {
+        id: 4,
+        nombre: "Dragón",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_90.png"
+        ],
+        descripcion: "Fireball",
+        currentIndex: 0
+    },
+       {
+        id: 5,
+        nombre: "Grulla",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_180.png",
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_90.png"
+        ],
+        descripcion: "Si, es la nube de DBZ",
+        currentIndex: 0
+    },
+       {
+        id: 6,
+        nombre: "Serval",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_90.png"
+        ],
+        descripcion: "Otro gato",
+        currentIndex: 0
+    },
+       {
+        id: 7,
+        nombre: "Caballo",
+        imagenes: [
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png"
+        ],
+        descripcion: "Ico",
+        currentIndex: 0
+    },
+     {
+        id: 8,
+        nombre: "Panda Rojo",
+        imagenes: [
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_180.png",
+            "Cortar/Renders/render_PandaRojo/PandaRojo_vista_270.png"
+        ],
+        descripcion: "Guerrero Dragón",
+        currentIndex: 0
+    },
+     {
+        id: 9,
+        nombre: "Chimuelo",
+        imagenes: [
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_270.png",
+            "Cortar/Renders/render_chimuelo/chimuelo_vista_180.png"
+        ],
+        descripcion: "Entrenable",
+        currentIndex: 0
+    },
+     
 ];
 
 // Función para generar el HTML de una tarjeta
 function crearTarjeta(modelo) {
-    const tagsHTML = modelo.tags
-        .map(tag => `<span class="tag tag-estilo">${tag}</span>`)
-        .join('');
+    const imagenes = modelo.imagenes || [];
+    const imagenActual = imagenes[modelo.currentIndex] || imagenes[0] || '';
 
     return `
-        <article class="card" data-category="${modelo.categoria}">
+        <article class="card" data-model-id="${modelo.id}">
             <div class="card-image-wrapper">
-                <img src="${modelo.imagen}" alt="${modelo.nombre}">
+                <button class="carousel-btn carousel-prev" aria-label="Anterior">‹</button>
+                <img class="carousel-image" src="${imagenActual}" alt="${modelo.nombre}">
+                <button class="carousel-btn carousel-next" aria-label="Siguiente">›</button>
             </div>
             <div class="card-content">
                 <h2 class="card-title">${modelo.nombre}</h2>
                 <p class="card-description">${modelo.descripcion}</p>
-                <div class="card-tags">
-                    ${tagsHTML}
-                </div>
             </div>
         </article>
     `;
@@ -54,28 +121,27 @@ function renderizarModelos() {
     grid.innerHTML = modelos.map(modelo => crearTarjeta(modelo)).join('');
 }
 
-// Función para filtrar tarjetas
-function filterCards(category) {
-    const cards = document.querySelectorAll('.card');
-    const filterBtns = document.querySelectorAll('.filter-btn');
+// Actualizar la imagen mostrada en un card específico
+function actualizarImagen(card, modelo) {
+    const imageElement = card.querySelector('.carousel-image');
+    if (imageElement && modelo.imagenes && modelo.imagenes.length > 0) {
+        const index = modelo.currentIndex;
+        imageElement.src = modelo.imagenes[index];
+    }
+}
 
-    // Actualizar botones activos
-    filterBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent === category) {
-            btn.classList.add('active');
-        }
-    });
+// Cambiar imagen anterior/siguiente
+function cambiarImagen(modeloId, direccion) {
+    const modelo = modelos.find(m => m.id === modeloId);
+    if (!modelo || !modelo.imagenes || modelo.imagenes.length === 0) return;
 
-    // Mostrar/ocultar tarjetas según categoría
-    cards.forEach(card => {
-        if (category === 'Todos') {
-            card.style.display = 'flex';
-        } else {
-            const cardCategory = card.dataset.category;
-            card.style.display = cardCategory === category ? 'flex' : 'none';
-        }
-    });
+    const total = modelo.imagenes.length;
+    modelo.currentIndex = (modelo.currentIndex + direccion + total) % total;
+
+    const card = document.querySelector(`article.card[data-model-id="${modeloId}"]`);
+    if (card) {
+        actualizarImagen(card, modelo);
+    }
 }
 
 // Ejecutar cuando el DOM esté completamente cargado
@@ -83,12 +149,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Renderizar todas las tarjetas
     renderizarModelos();
 
-    // Agregar event listeners a los botones de filtro
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const category = this.textContent;
-            filterCards(category);
-        });
+    document.addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.classList.contains('carousel-prev') || target.classList.contains('carousel-next')) {
+            const card = target.closest('article.card');
+            if (!card) return;
+
+            const modeloId = Number(card.dataset.modelId);
+            const direccion = target.classList.contains('carousel-prev') ? -1 : 1;
+            cambiarImagen(modeloId, direccion);
+        }
     });
 });
