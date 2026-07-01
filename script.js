@@ -11,19 +11,21 @@ const modelos = [
         descripcion: "",
         currentIndex: 0
     },
-    {
-        id: 11,
-        nombre: "Scouts de Argentina",
+       {
+        id: 2,
+        nombre: "Caballo",
         imagenes: [
-            "Cortar/Renders/render_canuto/canuto_vista_180.png",
-            "Cortar/Renders/render_canuto/canuto_vista_270.png",
-            "Cortar/Renders/render_canuto/canuto_vista_0.png"
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_270.png",
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png",
+            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_90.png"
         ],
         descripcion: "",
         currentIndex: 0
     },
+    
+    
     {
-        id: 12,
+        id: 3,
         nombre: "Coyote",
         imagenes: [
             "Cortar/Renders/render_coyote/coyote_vista_180.png",
@@ -34,7 +36,7 @@ const modelos = [
         currentIndex: 0
     },
     {
-        id: 2,
+        id: 4,
         nombre: "Pájaro Carpintero",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (5) Carpintero/Swanky Jarv (5)_vista_180.png",
@@ -45,7 +47,7 @@ const modelos = [
         currentIndex: 0
     },
       {
-        id: 3,
+        id: 5,
         nombre: "Grulla",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (10) Grulla DBZ/Swanky Jarv (10)_vista_180.png",
@@ -55,19 +57,9 @@ const modelos = [
         descripcion: "",
         currentIndex: 0
     },
-       {
-        id: 4,
-        nombre: "Caballo",
-        imagenes: [
-            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_270.png",
-            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_0.png",
-            "Cortar/Renders/render_Swanky Jarv (17) Horse bueno/Swanky Jarv (17)_vista_90.png"
-        ],
-        descripcion: "",
-        currentIndex: 0
-    },
+    
     {
-        id: 5,
+        id: 6,
         nombre: "Panda Rojo",
         imagenes: [
             "Cortar/Renders/render_PandaRojo/PandaRojo_vista_180.png",
@@ -80,7 +72,7 @@ const modelos = [
     {
 
         
-        id: 6,
+        id: 7,
         nombre: "Tirica",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (2) Tirica/Swanky Jarv (2)_vista_180.png",
@@ -91,7 +83,7 @@ const modelos = [
         currentIndex: 0
     },
     {
-        id: 7,
+        id: 8,
         nombre: "Lince",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (3) Lince/Swanky Jarv (3)_vista_180.png",
@@ -103,8 +95,8 @@ const modelos = [
     },
     
        {
-        id: 8,
-        nombre: "Dragón",
+        id: 9,
+        nombre: "Esqueleto",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_0.png",
             "Cortar/Renders/render_Swanky Jarv (7) Dragon Esqueleto/Swanky Jarv (7)_vista_90.png",
@@ -113,9 +105,20 @@ const modelos = [
         descripcion: "",
         currentIndex: 0
     },
+     {
+        id: 10,
+        nombre: "Foca",
+        imagenes: [
+            "Cortar/Renders/render_foca/foca_vista_180.png",
+            "Cortar/Renders/render_foca/foca_vista_270.png",
+            "Cortar/Renders/render_foca/foca_vista_0.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
      
        {
-        id: 9,
+        id: 11,
         nombre: "Serval",
         imagenes: [
             "Cortar/Renders/render_Swanky Jarv (12) Serval/Swanky Jarv (12)_vista_270.png",
@@ -128,12 +131,23 @@ const modelos = [
     
      
      {
-        id: 10,
+        id: 12,
         nombre: "Chimuelo",
         imagenes: [
             "Cortar/Renders/render_chimuelo/chimuelo_vista_180.png",
             "Cortar/Renders/render_chimuelo/chimuelo_vista_270.png",
             "Cortar/Renders/render_chimuelo/chimuelo_vista_0.png"
+        ],
+        descripcion: "",
+        currentIndex: 0
+    },
+    {
+        id: 13,
+        nombre: "Scouts de Argentina",
+        imagenes: [
+            "Cortar/Renders/render_canuto/canuto_vista_180.png",
+            "Cortar/Renders/render_canuto/canuto_vista_270.png",
+            "Cortar/Renders/render_canuto/canuto_vista_0.png"
         ],
         descripcion: "",
         currentIndex: 0
